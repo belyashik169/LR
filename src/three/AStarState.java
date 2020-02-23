@@ -16,8 +16,8 @@ public class AStarState {
      * This is a reference to the map that the A* algorithm is navigating.
      **/
     private Map2D map;
-    Map<Location, Waypoint> HashMapOpen = new HashMap<Location, Waypoint>();
-    Map<Location, Waypoint> HashMapClose = new HashMap<Location, Waypoint>();
+    Map<Location, Waypoint> HashMapOpen = new HashMap<>();
+    Map<Location, Waypoint> HashMapClose = new HashMap<>();
 
 
     /**
