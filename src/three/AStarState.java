@@ -12,6 +12,8 @@ public class AStarState {
  * the basic operations that the A* pathfinding algorithm needs to perform its
  * processing.
  **/
+
+
     /**
      * This is a reference to the map that the A* algorithm is navigating.
      **/
@@ -43,7 +45,7 @@ public class AStarState {
      * returns <code>null</code>.
      **/
     public Waypoint getMinOpenWaypoint() {
-        float minDistance = 999999;
+        float minDistance = Integer.MAX_VALUE;
         Waypoint minWaypoint = null;
         for (Map.Entry<Location, Waypoint> entry : HashMapOpen.entrySet()) {
             Waypoint currentWaypoint = entry.getValue();

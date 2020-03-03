@@ -149,10 +149,8 @@ public class AStarApp {
 
         MapCellHandler cellHandler = new MapCellHandler();
 
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 mapCells[x][y] = new JMapCell();
 
                 gbConstraints.gridx = x;
@@ -212,11 +210,8 @@ public class AStarApp {
             for (int x = 0; x < width; x++)
             {
                 mapCells[x][y].setPath(false);
-
-                if (mapCells[x][y].isPassable())
-                    map.setCellValue(x, y, 0);
-                else
-                    map.setCellValue(x, y, Integer.MAX_VALUE);
+                if (mapCells[x][y].isPassable()) map.setCellValue(x, y, 0);
+                else map.setCellValue(x, y, Integer.MAX_VALUE);
             }
         }
 
