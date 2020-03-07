@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class JImageDisplay extends JComponent {
-    private BufferedImage image;
+    BufferedImage image;
 
     public JImageDisplay(int width, int height){
-        image=new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        image =new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         setPreferredSize(new Dimension(width, height));
     }
 
@@ -28,4 +28,7 @@ public class JImageDisplay extends JComponent {
         image.setRGB(x,y, rgbColor);
     }
 
+    public BufferedImage getBufferedImage() {
+        return image;
+    }
 }
