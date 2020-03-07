@@ -69,6 +69,11 @@ public class FractalExplorer {
     public class MouseHandler implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
+            double mouseX = FractalGenerator.getCoord(range.x, range.x + range.width, size, e.getX());
+            double mouseY = FractalGenerator.getCoord(range.y, range.y + range.width, size, e.getY());
+            System.out.println(mouseX + " "+ mouseY);
+            fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
+            drawFractal();
         }
 
         public void mousePressed(MouseEvent e) {}
