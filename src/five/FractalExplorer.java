@@ -10,7 +10,7 @@ import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
 
 /**
- @author shaidullin
+     @author shaidullin
  */
 
 public class FractalExplorer {
@@ -100,7 +100,7 @@ public class FractalExplorer {
         public void mouseClicked(MouseEvent e) {
             double mouseX = FractalGenerator.getCoord(range.x, range.x + range.width, size, e.getX());
             double mouseY = FractalGenerator.getCoord(range.y, range.y + range.width, size, e.getY());
-            System.out.println(mouseX + " "+ mouseY);
+            System.out.println(mouseX + " " + mouseY);
             fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
             drawFractal();
         }

@@ -26,7 +26,7 @@ public class FractalExplorer {
     }
 
     void createAndShowGUI() {
-        JFrame frame = new JFrame("Fractalsuka");
+        JFrame frame = new JFrame("Fractal");
         JButton button = new JButton("Reset");
         image = new JImageDisplay(size, size);
 
