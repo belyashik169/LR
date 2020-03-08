@@ -1,4 +1,4 @@
-package four;
+package work4;
 
 import java.awt.geom.Rectangle2D;
 

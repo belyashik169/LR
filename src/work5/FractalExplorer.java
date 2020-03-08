@@ -1,8 +1,8 @@
-package five;
+package work5;
 
-import four.FractalGenerator;
-import four.JImageDisplay;
-import four.Mandelbrot;
+import work4.FractalGenerator;
+import work4.JImageDisplay;
+import work4.Mandelbrot;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,7 +24,7 @@ public class FractalExplorer {
     private JImageDisplay image;
     private FractalGenerator fcGen;
     private Rectangle2D.Double range;
-    private JComboBox<FractalGenerator> box;
+    private JComboBox<Object> box;
     private JButton btnReset;
     private JButton btnSave;
     JPanel panelBox;
@@ -128,19 +128,18 @@ public class FractalExplorer {
             double mouseX = FractalGenerator.getCoord(range.x, range.x + range.width, size, e.getX());
             double mouseY = FractalGenerator.getCoord(range.y, range.y + range.width, size, e.getY());
             System.out.println(mouseX + " " + mouseY);
-            if (e.getButton()==MouseEvent.BUTTON1) {
+            if (e.getButton() == MouseEvent.BUTTON1) {
                 fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
                 drawFractal();
-            }else if (e.getButton()==MouseEvent.BUTTON3){
+            } else if (e.getButton() == MouseEvent.BUTTON3) {
                 fcGen.recenterAndZoomRange(range, mouseX, mouseY, 1.5);
                 drawFractal();
             }
         }
-
-        public void mousePressed(MouseEvent e) {}
-        public void mouseReleased(MouseEvent e) {}
-        public void mouseEntered(MouseEvent e) {}
-        public void mouseExited(MouseEvent e) {}
+        public void mousePressed(MouseEvent e) { }
+        public void mouseReleased(MouseEvent e) { }
+        public void mouseEntered(MouseEvent e) { }
+        public void mouseExited(MouseEvent e) { }
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package two;
+package work2;
 
 
 public class Point3d  extends Point2d{

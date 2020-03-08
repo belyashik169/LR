@@ -1,4 +1,4 @@
-package three;
+package work3;
 
 /**
  * This class represents a simple two-dimensional map composed of square cells.

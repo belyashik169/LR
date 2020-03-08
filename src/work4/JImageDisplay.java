@@ -1,4 +1,4 @@
-package four;
+package work4;
 
 import javax.swing.*;
 import java.awt.*;

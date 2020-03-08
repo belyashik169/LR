@@ -1,4 +1,4 @@
-package two;
+package work2;
 
 public class Point2d {
      double xCoord; // координата X
