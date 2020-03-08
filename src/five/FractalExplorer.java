@@ -11,7 +11,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -106,7 +105,7 @@ public class FractalExplorer {
                 FileFilter filter = new FileNameExtensionFilter("PNG Images", "PNG");
                 chooser.setFileFilter(filter);
                 chooser.setAcceptAllFileFilterUsed(false);
-                if (chooser.showSaveDialog(image) == JFileChooser.APPROVE_OPTION) {
+                if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
                     try {
                         ImageIO.write(image.getBufferedImage(), "png", new File(chooser.getSelectedFile() + ".PNG"));
                     } catch (IOException ex) {
@@ -129,21 +128,19 @@ public class FractalExplorer {
             double mouseX = FractalGenerator.getCoord(range.x, range.x + range.width, size, e.getX());
             double mouseY = FractalGenerator.getCoord(range.y, range.y + range.width, size, e.getY());
             System.out.println(mouseX + " " + mouseY);
-            fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
-            drawFractal();
+            if (e.getButton()==MouseEvent.BUTTON1) {
+                fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
+                drawFractal();
+            }else if (e.getButton()==MouseEvent.BUTTON3){
+                fcGen.recenterAndZoomRange(range, mouseX, mouseY, 1.5);
+                drawFractal();
+            }
         }
 
-        public void mousePressed(MouseEvent e) {
-        }
-
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        public void mouseEntered(MouseEvent e) {
-        }
-
-        public void mouseExited(MouseEvent e) {
-        }
+        public void mousePressed(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {}
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) {}
     }
 
     public static void main(String[] args) {
