@@ -27,8 +27,6 @@ public class FractalExplorer {
     private JComboBox<Object> box;
     private JButton btnReset;
     private JButton btnSave;
-    JPanel panelBox;
-    JPanel panelBtn;
 
     public FractalExplorer(int size) {
         this.size = size;
@@ -40,7 +38,7 @@ public class FractalExplorer {
 
     }
 
-    void createAndShowGUI() {
+    public void createAndShowGUI() {
         JFrame frame = new JFrame("Fractals");
         image = new JImageDisplay(size, size);
         btnReset = new JButton("Reset");
@@ -54,11 +52,11 @@ public class FractalExplorer {
         box.addItem(new Tricorn());
         box.addItem(new BurningShip());
 
-        panelBox = new JPanel();
+        JPanel panelBox = new JPanel();
         panelBox.add(label);
         panelBox.add(box);
 
-        panelBtn = new JPanel();
+        JPanel panelBtn = new JPanel();
         panelBtn.add(btnReset);
         panelBtn.add(btnSave);
 
@@ -143,6 +141,6 @@ public class FractalExplorer {
     }
 
     public static void main(String[] args) {
-        new FractalExplorer(500);
+        new FractalExplorer(600);
     }
 }
