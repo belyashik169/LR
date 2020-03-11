@@ -35,13 +35,12 @@ public class FractalExplorer3 {
     private JFrame frame;
     private int rowsremaining;
 
-    public FractalExplorer3 (int size) {
+    public FractalExplorer3(int size) {
         this.size = size;
         this.fcGen = new Mandelbrot();
         this.range = new Rectangle2D.Double();
         fcGen.getInitialRange(this.range);
         createAndShowGUI();
-        drawFractal();
 
     }
 
@@ -64,31 +63,32 @@ public class FractalExplorer3 {
         panelBtn.add(btnReset);
         panelBtn.add(btnSave);
 
-        frame.add(image, BorderLayout.CENTER);
-        frame.add(panelBtn, BorderLayout.SOUTH);
-        frame.add(panelBox, BorderLayout.NORTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         ActionHandler handler = new ActionHandler();
         btnReset.addActionListener(handler);
         btnSave.addActionListener(handler);
         box.addActionListener(handler);
         image.addMouseListener(new MouseHandler());
 
+        frame.add(image, BorderLayout.CENTER);
+        frame.add(panelBtn, BorderLayout.SOUTH);
+        frame.add(panelBox, BorderLayout.NORTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
+        drawFractal();
     }
 
     private void drawFractal() {
         enableUI(FALSE);
-        rowsremaining=size;
+        rowsremaining = size;
         for (int y = 0; y < size; y++) {
             new FractalWorker(y).execute();
         }
     }
-    public void enableUI(boolean val){
-        if (val){
+
+    public void enableUI(boolean val) {
+        if (val == TRUE) {
             frame.setEnabled(TRUE);
         } else {
             frame.setEnabled(FALSE);
@@ -128,53 +128,62 @@ public class FractalExplorer3 {
             double mouseX = FractalGenerator.getCoord(range.x, range.x + range.width, size, e.getX());
             double mouseY = FractalGenerator.getCoord(range.y, range.y + range.width, size, e.getY());
             System.out.println(mouseX + " " + mouseY);
-            if (rowsremaining != 0) fcGen.getInitialRange(range);
-                else {
-                if (e.getButton() == MouseEvent.BUTTON1) {
-                    fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
-                    drawFractal();
-                } else if (e.getButton() == MouseEvent.BUTTON3) {
-                    fcGen.recenterAndZoomRange(range, mouseX, mouseY, 2);
-                    drawFractal();
-                }
+            if (e.getButton() == MouseEvent.BUTTON1) {
+                fcGen.recenterAndZoomRange(range, mouseX, mouseY, 0.5);
+                drawFractal();
+            } else if (e.getButton() == MouseEvent.BUTTON3) {
+                fcGen.recenterAndZoomRange(range, mouseX, mouseY, 2);
+                drawFractal();
             }
         }
-        public void mousePressed(MouseEvent e) { }
-        public void mouseReleased(MouseEvent e) { }
-        public void mouseEntered(MouseEvent e) { }
-        public void mouseExited(MouseEvent e) { }
+
+        public void mousePressed(MouseEvent e) {
+        }
+
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        public void mouseExited(MouseEvent e) {
+        }
     }
-    private class FractalWorker extends SwingWorker<Object, Object>{
+
+    private class FractalWorker extends SwingWorker<Object, Object> {
         int y;
         int[] array;
-        FractalWorker(int y){
-            this.y=y;
+
+        FractalWorker(int y) {
+            this.y = y;
         }
+
         @Override
         protected Object doInBackground() throws Exception {
-            array=new int[size];
+            array = new int[size];
             for (int x = 0; x < size; x++) {
-                for (int y = 0; y < size; y++) {
-                    double xCoord = FractalGenerator.getCoord(range.x, range.x + range.width, size, x);
-                    double yCoord = FractalGenerator.getCoord(range.y, range.y + range.width, size, y);
-                    double numIters = fcGen.numIterations(xCoord, yCoord);
-                    if (numIters == -1) array[x]=0;
-                    else {
-                        float hue = 0.7f + (float) numIters / 200f;
-                        int rgbColor = Color.HSBtoRGB(hue, 1f, 1f);
-                        array[x] = rgbColor;
-                    }
+                double xCoord = FractalGenerator.getCoord(range.x, range.x + range.width, size, x);
+                double yCoord = FractalGenerator.getCoord(range.y, range.y + range.width, size, y);
+                double numIters = fcGen.numIterations(xCoord, yCoord);
+                if (numIters == -1) array[x] = 0;
+                else {
+                    float hue = 0.7f + (float) numIters / 200f;
+                    int rgbColor = Color.HSBtoRGB(hue, 1f, 1f);
+                    array[x] = rgbColor;
                 }
             }
             return null;
         }
-        protected void done(){
+
+        protected void done() {
             for (int x = 0; x < size; x++) {
                 image.drawPixel(x, y, array[x]);
             }
             image.repaint(0, 0, y, size, 1);
             rowsremaining--;
-            if (rowsremaining==0) enableUI(TRUE);
+            if (rowsremaining == 0) {
+                enableUI(TRUE);
+            }
             super.done();
         }
     }
