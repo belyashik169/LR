@@ -17,6 +17,9 @@ import java.io.IOException;
 
 /**
  * @author shaidullin
+ *
+ * В данном классе добавлено два новых фрактала, кнопка сохранения и выпадающий список,
+ * а также улучшена реализация MouseHandler
  */
 
 public class FractalExplorer {
@@ -45,8 +48,8 @@ public class FractalExplorer {
         btnSave = new JButton("Save");
         //btnReset.setActionCommand("Reset");
         //btnSave.setActionCommand("Save");
-        JLabel label = new JLabel("Fractal: ");
-        box = new JComboBox<>();
+        JLabel label = new JLabel("Fractal: "); // добавление подписи
+        box = new JComboBox<>();// сoздание выпадающего списка
         //box.setActionCommand("box");
         box.addItem(new Mandelbrot());
         box.addItem(new Tricorn());

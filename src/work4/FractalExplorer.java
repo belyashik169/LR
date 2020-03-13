@@ -6,7 +6,10 @@ import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
 
 /**
-    @author shaidullin
+ * @author shaidullin
+ *
+ * Kласс FractalExplorer, который позволяет исследовать различные области фрактала, путем его создания, отображения через
+ * графический интерфейс Swing и обработки событий, вызванных взаимодействием приложения с пользователем
 */
 
 public class FractalExplorer {
@@ -24,7 +27,7 @@ public class FractalExplorer {
         drawFractal();
 
     }
-
+    // инициализирует графический интерфейс Swing
     public void createAndShowGUI() {
         JFrame frame = new JFrame("Fractal");
         JButton button = new JButton("Reset");
@@ -41,7 +44,7 @@ public class FractalExplorer {
         button.addActionListener( new ActionHandler());
         image.addMouseListener(new MouseHandler());
     }
-
+    // вспомогательный метод для вывода на экран фрактала
     private void drawFractal() {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
@@ -58,14 +61,14 @@ public class FractalExplorer {
         }
         image.repaint();
     }
-
+    // реализация кнопки
     public class ActionHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fcGen.getInitialRange(range);
             drawFractal();
         }
     }
-
+    // реализация кнопоки мышки
     public class MouseHandler implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {

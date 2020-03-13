@@ -1,8 +1,8 @@
 package work2;
 
 public class Point2d {
-     double xCoord; // координата X
-     double yCoord;//координата Y
+     protected double xCoord; // координата X
+     protected double yCoord;//координата Y
 
     public Point2d(double x, double y) {  //Конструктор инициализации
         xCoord = x;

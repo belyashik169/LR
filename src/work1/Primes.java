@@ -1,5 +1,9 @@
 package work1;
 
+/**
+ * @author shaidullin
+ */
+
 public class Primes {
     public static void main(String[] args) {
         for (int m = 2; m < 100; m++)
