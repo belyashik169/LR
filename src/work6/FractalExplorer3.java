@@ -88,7 +88,7 @@ public class FractalExplorer3 {
             new FractalWorker(y).execute();
         }
     }
-
+    //включать или отключать кнопки с выпадающим списком в пользовательском интерфейсе на основе указанного параметра
     public void enableUI(boolean val) {
         if (val == TRUE) {
             frame.setEnabled(TRUE);
@@ -151,7 +151,7 @@ public class FractalExplorer3 {
         public void mouseExited(MouseEvent e) {
         }
     }
-
+    //FractalWorker отвеает за вычисление значений цвета для одной строки фрактала
     private class FractalWorker extends SwingWorker<Object, Object> {
         int y;
         int[] array;
@@ -159,7 +159,7 @@ public class FractalExplorer3 {
         FractalWorker(int y) {
             this.y = y;
         }
-
+        //Метод doInBackground() вызывается в фоновом потоке и отвечает за выполнение длительной задачи
         @Override
         protected Object doInBackground() throws Exception {
             array = new int[size];
@@ -176,7 +176,7 @@ public class FractalExplorer3 {
             }
             return null;
         }
-
+        //Метод done() вызывается, когда фоновая задача завершена
         protected void done() {
             for (int x = 0; x < size; x++) {
                 image.drawPixel(x, y, array[x]);
