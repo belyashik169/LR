@@ -12,7 +12,7 @@ public class JImageDisplay extends JComponent {
         image =new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         setPreferredSize(new Dimension(width, height));
     }
-    // код отрисовки
+/** код отрисовки */
     public void paintComponent (Graphics g){
         g.drawImage (image, 0, 0, image.getWidth(), image.getHeight(), null);
     }

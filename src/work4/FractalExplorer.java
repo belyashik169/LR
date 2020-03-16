@@ -27,7 +27,7 @@ public class FractalExplorer {
         drawFractal();
 
     }
-    // инициализирует графический интерфейс Swing
+    /** инициализирует графический интерфейс Swing */
     public void createAndShowGUI() {
         JFrame frame = new JFrame("Fractal");
         JButton button = new JButton("Reset");
@@ -44,7 +44,7 @@ public class FractalExplorer {
         button.addActionListener( new ActionHandler());
         image.addMouseListener(new MouseHandler());
     }
-    // вспомогательный метод для вывода на экран фрактала
+    /** вспомогательный метод для вывода на экран фрактала */
     private void drawFractal() {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
@@ -61,14 +61,14 @@ public class FractalExplorer {
         }
         image.repaint();
     }
-    // реализация кнопки
+/** реализация кнопки */
     public class ActionHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fcGen.getInitialRange(range);
             drawFractal();
         }
     }
-    // реализация кнопоки мышки
+/** реализация кнопоки мышки */
     public class MouseHandler implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
