@@ -17,6 +17,7 @@ public class URLDepthPair {
             url = new URL(host);
         } catch (MalformedURLException e) {
             System.err.println("MalformedURLException: " + e.getMessage());
+            return;
         }
     }
 
@@ -36,10 +37,14 @@ public class URLDepthPair {
         return url.getHost();
     }
 
+    public String getLink() {
+        return url.getProtocol()+"://"+url.getHost();
+    }
+
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof tt.URLDepthPair) {
-            tt.URLDepthPair o = (tt.URLDepthPair) obj;
+    public boolean equals(Object ob) {
+        if (ob instanceof URLDepthPair) {
+            URLDepthPair o = (URLDepthPair) ob;
             return this.host.equals(o.getURL());
         }
         return false;
