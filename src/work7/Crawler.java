@@ -30,12 +30,12 @@ public class Crawler {
     public void Search() throws IOException {
         URLDepthPair pair;
         Socket socket;
-        int i=0;
+        int s=0;
 
         while (unchecked.size() > 0) {
             pair = unchecked.removeFirst();
             checked.add(pair);
-            System.out.println(++i + ": " + pair.getURL() + " [" + pair.getDepth() + "]");
+            System.out.printf("%-6s%-70s%5s%n",++s + ": " , pair.getURL(),"["+pair.getDepth()+"]");
             if (pair.getDepth() == 0) continue;
             try {
                 socket = new Socket(pair.getWebHost(), 80);
@@ -54,18 +54,15 @@ public class Crawler {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String input;
 
-            //int i=0;
             while ((input = reader.readLine()) != null) {
                 while (input.contains("a href=\"")) {
                     String link;
                     try {
                         input = input.substring(input.indexOf("a href=\"") + 8);
-                        //System.out.println(++i + "#"+ input);
                         link = input.substring(0, input.indexOf('\"'));
                         if (!link.startsWith(prefix))
                             link = link.startsWith("/") ? pair.getLink() + link : pair.getLink() + "/" + link;
                     } catch (StringIndexOutOfBoundsException e) {
-                        System.err.println(e);
                         break;
                     }
                     if (!(unchecked.contains(new URLDepthPair(link, pair.getDepth() - 1)) | checked.contains(new URLDepthPair(link, pair.getDepth() - 1))))
@@ -79,7 +76,6 @@ public class Crawler {
     }
 
     public static void main(String msi[]) throws IOException {
-//        msi = new String[]{"http://www.mtuci.ru/", "2", "http://isua-mtuci.ru/", "2", "http://www.tadviser.ru/", "1", "https://www.nytimes.com/", "1"};
         new Crawler(msi[0], Integer.parseInt(msi[1]))
                 .Search();
 

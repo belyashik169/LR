@@ -2,7 +2,6 @@ package work7;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Objects;
 
 public class URLDepthPair {
 
@@ -48,10 +47,5 @@ public class URLDepthPair {
             return this.host.equals(o.getURL());
         }
         return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash();
     }
 }
