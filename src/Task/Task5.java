@@ -126,7 +126,7 @@ public class Task5 {
     }
 
     //#8
-    static String getSha256Hash(String line) throws NoSuchAlgorithmException{
+    static String getSha256Hash(String line) throws NoSuchAlgorithmException {
         byte[] hash = MessageDigest.getInstance("SHA-256").digest(line.getBytes(StandardCharsets.UTF_8));
         StringBuilder sb = new StringBuilder();
         for (byte b : hash)
@@ -145,24 +145,25 @@ public class Task5 {
     }
 
     //#10
-    static String hexLattice(int num){
-        int n = 1,count =1;
-        String res="";
-        while (count<num) count+=6*n++;
-        if (count!=num) System.out.println("invalid value try: "+count);
-        for (int i =0; i<n; i++){
-            for (int j=0;j<n-i;j++) res+=" ";
-            for (int j=0;j<n+i;j++) res+="0 ";
-            res+="\n";
+    static String hexLattice(int num) {
+        int n = 1, count = 1;
+        String res = "";
+        while (count < num) count += 6 * n++;
+        if (count != num) System.out.println("invalid value, try: " + count);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i; j++) res += " ";
+            for (int j = 0; j < n + i; j++) res += "0 ";
+            res += "\n";
         }
-        for (int i=n-1; i>0; i--){
-            for (int j=0;j<=n-i;j++) res+=" ";
-            for (int j=1;j<n+i;j++)  res+="0 ";
-            res+="\n";
+        for (int i = n - 1; i > 0; i--) {
+            for (int j = 0; j <= n - i; j++) res += " ";
+            for (int j = 1; j < n + i; j++) res += "0 ";
+            res += "\n";
         }
         return res;
     }
+
     public static void main(String[] msi) throws NoSuchAlgorithmException {
-        
+
     }
 }
