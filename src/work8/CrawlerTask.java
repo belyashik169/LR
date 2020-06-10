@@ -84,8 +84,7 @@ public class CrawlerTask implements Runnable {
             Thread thread = new Thread(new CrawlerTask(pool));
             thread.start();
         }
-        /*
-         */
+        while (pool.getWait() != numThread){ }
 
         int s = 0;
         for (URLDepthPair pair : pool.getChecked())
