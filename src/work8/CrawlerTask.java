@@ -75,7 +75,7 @@ public class CrawlerTask implements Runnable {
         }
     }
     public static void main(String[] msi) {
-
+        msi = new String[]{"http://www.mtuci.ru/", "2", "4"};
         URLPool pool = new URLPool(Integer.parseInt(msi[1]));
         pool.addPair(new URLDepthPair(msi[0], 0));
 
