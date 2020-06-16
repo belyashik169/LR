@@ -187,8 +187,8 @@ public class Task6 {
     static boolean palindromedescendant(int num) {
         StringBuilder s = new StringBuilder().append(num);
         while (true) {
+            if (s.toString().equals(s.reverse().toString())) return true;
             if (s.length() % 2 == 1) break;
-            else if (s.toString().equals(s.reverse().toString())) return true;
             int n = parseInt(s.toString());
             s.delete(0, s.length());
             while (n > 0) {
